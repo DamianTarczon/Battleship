@@ -1,5 +1,7 @@
+from _typeshed import FileDescriptor
 from tabulate import tabulate
 import copy
+import os
 
 
 def changing_table(player, player_move, list):
@@ -10,12 +12,13 @@ def changing_table(player, player_move, list):
         return list
 
 def letter_to_number(letter):
-    if letter == "A":
-        return 0
-    elif letter == "B":
-        return 1
-    elif letter == "C":
-        return 2
+    letters_to_numbers = {
+        'A': 0,
+        'B': 1,
+        'C': 2,
+        'D': 3,
+        'E': 4,
+    }
 
 
 def print_table(list):
@@ -69,7 +72,7 @@ def check_win():
     pass
 
 def clear():
-    pass
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def quit():
     pass
