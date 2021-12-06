@@ -74,8 +74,11 @@ def check_win():
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def quit():
-    pass
+def exit(user_input):   #w menu 
+    if user_input.lower() == 'quit':
+        print('Thanks for playing. Good Bye')
+        menu()
+
 
 def wprowadzenie_strzału_przez_uzytkownika(): 
     pass
