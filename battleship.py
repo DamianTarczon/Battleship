@@ -71,8 +71,11 @@ def check_win():
 def clear():
     pass
 
-def quit():
-    pass
+def exit(user_input):   #w menu 
+    if user_input.lower() == 'quit':
+        print('Thanks for playing. Good Bye')
+        menu()
+
 
 def wprowadzenie_strzału_przez_uzytkownika(): 
     pass
