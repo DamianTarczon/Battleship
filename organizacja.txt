@@ -1,0 +1,24 @@
+1. Wyświetla się przywitanie oraz zasady gry
+2. Wyświetla się pusta tabela i prosimy 1 użytkownika o ustawienie statków (podajemy zasady)
+3. Wyświetla się pusta tabela i prosimy 2 użytkownika o ustawienie statków (podajemy zasady)
+4. Wyświetla się pusta tablica i prosimy 1 użytkownika o podanie strzału
+a)uzytkownik wpisuje koordynaty
+b)sprawdzamy na tablicy co się znajduje pod tym strzałem
+    a1) jesli trafi to podstawiamy H
+    a2) jesli nie trafi to podstawiamy M
+    a3) jesli statek zostanie zatopiony to podstawiamy za wszystkie "H" tego statku "S"
+c)wyswietlamy na tablicy ruch użytkownika
+d)ruch 2 użytkownika
+f)gra działa dopóki wszystkie statki jednej osoby nie zostaną zatopione
+
+
+1. def menu() - Wyświetla się przywitanie oraz zasady gry
+2. def print_tablica(lista) - funckja do drukowania tablicy w zależności od listy
+3. def wprowadzenie koordynatow przez uzytkownika() - ustawienie statków
+4. def init_board(board)
+5. def podstawienie_znakow(input_uzytkownika)
+6. def check_win() - sprawdza czy wszystkie statki zostały zatopione
+7. def clear()
+8. def quit() - wychodzenie do menu i wtedy zamykanie gry
+9. def wprowadzenie strzału przez uzytkownika() 
+
