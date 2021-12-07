@@ -3,7 +3,17 @@ from tabulate import tabulate
 import copy
 import msvcrt
 import os
+import time
 
+logo = """
+     _           _   _   _           _     _       
+    | |         | | | | | |         | |   (_)      
+    | |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
+    | '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+    | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
+    |_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
+                                            | |    
+                                            |_|   """
 
 def changing_table(player, player_move, list):
     if len(player_move) == 2:
