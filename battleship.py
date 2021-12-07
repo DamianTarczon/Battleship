@@ -1,19 +1,8 @@
+from _typeshed import FileDescriptor
 from tabulate import tabulate
 import copy
+import msvcrt
 import os
-import time
-
-logo = """
-     _           _   _   _           _     _       
-    | |         | | | | | |         | |   (_)      
-    | |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
-    | '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
-    | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
-    |_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
-                                            | |    
-                                            |_|   """
-
-                                      
 
 
 def changing_table(player, player_move, list):
@@ -31,13 +20,11 @@ def letter_to_number(letter):
         'D': 3,
         'E': 4,
     }
-    return letters_to_numbers.get(letter)
+
 
 def print_table(list):
-    head = [" ", "1", "2", "3", "4", "5"]
+    head = [" ", "1", "2", "3"]
     return(tabulate(list, headers=head, tablefmt="fancy_grid"))
-
-print(print_table([["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]))
 
 
 def get_list_copy(list):
@@ -73,30 +60,30 @@ def check_move(list):
 def menu():
     pass
 
-def stawianie_statkow_na_planszy():
+def wprowadzenie_koordynatow_przez_uzytkownika():
     pass
 
-def init_board():
-    board = [["A", x, 0, 0, 0, 0], ["B", 0, 0, x, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, x, 0, 0], ["E", 0, 0, 0, 0, 0]]
+def init_board(board):
+    board = [
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    ]
     return board
 
-
-def has_won(board):
-    if board.count("S") == 6:
-        print("Player1 has one!!!")
-        exit()
-    else:
-        return None
-
-def podstawienie_znakow_X(input_uzytkownika):
-    pass
-
-def podstawienie_znakow_innych():
+def podstawienie_znakow(input_uzytkownika):
     pass
 
 def check_win():
     pass
 
+def delay():
+    print("Loading…")
+    print("█▒▒▒▒▒▒▒▒▒")
+    print("Press any key to continue")
+msvcrt.getch()
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -106,76 +93,7 @@ def exit(user_input):   #w menu
         menu()
 
 
-def zatapianie_statkow(): 
+def wprowadzenie_strzału_przez_uzytkownika(): 
     pass
 
-def delay():
-    pass
 
-def get_move(board, player):     
-    row, col = 3, 3     
-    possible_moves = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"]     
-    move = input("WHERE YOU WANT TO SHOOT?: ")      
-    if move.lower() == "quit":         
-        close_game()     
-    elif move.lower() not in possible_moves:         
-        print("TRY TO HIT THE BOARD!!!")         
-        return get_move(board,player)   
-    if "a" in move.lower():         
-        row = 0     
-    elif "b" in move.lower():        
-        row = 1     
-    elif "c" in move.lower():         
-        row = 2     
-    if board[row][col] != 0:         
-        print("THIS SPOT IS TAKEN. TRY TO HIT ANOTHER ONE!!!")         
-        return get_move(board, player)     
-    return row, col
-
-def game_logic():
-    board = init_board()
-    print_table(board)
-    user1_input = stawianie_statkow_na_planszy()
-    podstawienie_znakow_X(user1_input)
-    print_table(board)
-    delay()
-    board2 = init_board()
-    print_table(board2)
-    user2_input = stawianie_statkow_na_planszy()
-    podstawienie_znakow_X(user2_input)
-    print_table(board2)
-    board3 = init_board()
-    board4 = init_board()
-    while True:
-        print_table(board3 + board4)
-        user1_input = zatapianie_statkow()
-        podstawienie_znakow_innych(board3, user1_input)
-        has_won()
-        print_table(board3 + board4)
-        user2_input = zatapianie_statkow()
-        podstawienie_znakow_innych(board4, user2_input)
-        has_won()
-
-
-def main_menu():
-    print('Welcome to BattleShips Game.')
-    time.sleep(1)
-    print(logo)
-    time.sleep(1)
-    print('This is a game for 2 players.\n')
-    time.sleep(1)
-    print('The game is played on a 5x5 board.\n')
-    time.sleep(1)
-    print('Place your ships on the board.\n')
-    time.sleep(1)
-    print('Good luck & have fun.')
-    time.sleep(1)
-    player_quit = input('Do you want to finish Y/N?: ')
-    while True:
-        if player_quit.lower() == 'y':
-            print('Thanks for playing')
-            exit()
-        elif player_quit.lower() == 'n':
-            main_menu()
-        else:
-            player_quit = input('Choose only Y/N?: ')
