@@ -36,24 +36,85 @@ def print_table(list):
     print(tabulate(list, headers=head, tablefmt="fancy_grid"))
 
 def check_move_1(row, col, board):
-    '''board[row - 1][col] #nad x
-    board[row][col - 1] #po lewej stronie x
-    board[row][col + 1] #po prawej stronie x
-    board[row + 1][col] #pod x'''
     while True:
         user_input = check_valid_move_from_user_input()
         row2, col2 = user_input_to_row_and_col(user_input)
-        if board[row2][col2] == board[row - 1][col]:
+        if row2 == row - 1 and col2 == col:
             changing_table(row2, col2, board)
             break
-        elif board[row2][col2] == board[row + 1][col]:
+        elif row2 == row + 1 and col2 == col:
             changing_table(row2, col2, board)
             break
-        elif board[row2][col2] == board[row][col - 1]:
+        elif row2 == row and col2 == col - 1:
             changing_table(row2, col2, board)
             break
-        elif board[row2][col2] == board[row][col + 1]:
+        elif row2 == row and col2 == col + 1:
             changing_table(row2, col2, board)
+            break
+        else:
+            continue
+
+
+def check_move_2(board):
+    while True:
+        user_input = check_valid_move_from_user_input()
+        row, col = user_input_to_row_and_col(user_input)
+        if board[row-1][col] == "X":
+            continue
+        elif board[row][col - 1] == "X":
+            continue
+        elif board[row][col + 1] == "X":
+            continue
+        elif board[row + 1][col] == "X":
+            continue
+        else:
+            changing_table(row, col, board)
+            return row, col
+
+
+def check_move_3(row, col, board):
+    while True:
+        user_input = check_valid_move_from_user_input()
+        row3, col3 = user_input_to_row_and_col(user_input)
+        if row3 == row - 1 and col3 == col:
+            if board[row3-1][col3] == "X":
+                continue
+            elif board[row3][col3 - 1] == "X":
+                continue
+            elif board[row3][col3 + 1] == "X":
+                continue
+            else:
+                changing_table(row3, col3, board)
+            break  
+        elif row3 == row + 1 and col3 == col:
+            if board[row3][col3 - 1] == "X":
+                continue
+            elif board[row3][col3 + 1] == "X":
+                continue
+            elif board[row3 + 1][col3] == "X":
+                continue
+            else:
+                changing_table(row3, col3, board)
+            break
+        elif row3 == row and col3 == col - 1:
+            if board[row3-1][col3] == "X":
+                continue
+            elif board[row3][col3 - 1] == "X":
+                continue
+            elif board[row3 + 1][col3] == "X":
+                continue
+            else:
+                changing_table(row3, col3, board)
+            break
+        elif row3 == row and col3 == col + 1:
+            if board[row3-1][col3] == "X":
+                continue
+            elif board[row3][col3 + 1] == "X":
+                continue
+            elif board[row3 + 1][col3] == "X":
+                continue
+            else:
+                changing_table(row3, col3, board)
             break
         else:
             continue
@@ -67,10 +128,19 @@ def podstawienie_znakow(board):
     print_table(board)
     check_move_1(row, col, board)
     print_table(board)
+    row2, col2 = check_move_2(board)
+    print_table(board)
+    check_move_3(row2, col2, board)
+    print_table(board)
 
-    #check_move_1()
+
 
 
 board = [["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]
 
 podstawienie_znakow(board)
+
+"""board[row - 1][col] #nad x
+board[row][col - 1] #po lewej stronie x
+board[row][col + 1] #po prawej stronie x
+board[row + 1][col] #pod x"""
