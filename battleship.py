@@ -1,6 +1,19 @@
 from tabulate import tabulate
 import copy
 import os
+import time
+
+logo = """
+     _           _   _   _           _     _       
+    | |         | | | | | |         | |   (_)      
+    | |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
+    | '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+    | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
+    |_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
+                                            | |    
+                                            |_|   """
+
+                                      
 
 
 def changing_table(player, player_move, list):
@@ -142,3 +155,27 @@ def game_logic():
         user2_input = zatapianie_statkow()
         podstawienie_znakow_innych(board4, user2_input)
         has_won()
+
+
+def main_menu():
+    print('Welcome to BattleShips Game.')
+    time.sleep(1)
+    print(logo)
+    time.sleep(1)
+    print('This is a game for 2 players.\n')
+    time.sleep(1)
+    print('The game is played on a 5x5 board.\n')
+    time.sleep(1)
+    print('Place your ships on the board.\n')
+    time.sleep(1)
+    print('Good luck & have fun.')
+    time.sleep(1)
+    player_quit = input('Do you want to finish Y/N?: ')
+    while True:
+        if player_quit.lower() == 'y':
+            print('Thanks for playing')
+            exit()
+        elif player_quit.lower() == 'n':
+            main_menu()
+        else:
+            player_quit = input('Choose only Y/N?: ')
