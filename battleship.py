@@ -1,19 +1,8 @@
+from _typeshed import FileDescriptor
 from tabulate import tabulate
 import copy
+import msvcrt
 import os
-import time
-
-logo = """
-     _           _   _   _           _     _       
-    | |         | | | | | |         | |   (_)      
-    | |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
-    | '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
-    | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
-    |_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
-                                            | |    
-                                            |_|   """
-
-                                      
 
 
 def changing_table(player, player_move, list):
@@ -31,13 +20,11 @@ def letter_to_number(letter):
         'D': 3,
         'E': 4,
     }
-    return letters_to_numbers.get(letter)
+
 
 def print_table(list):
-    head = [" ", "1", "2", "3", "4", "5"]
+    head = [" ", "1", "2", "3"]
     return(tabulate(list, headers=head, tablefmt="fancy_grid"))
-
-print(print_table([["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]))
 
 
 def get_list_copy(list):
@@ -73,30 +60,30 @@ def check_move(list):
 def menu():
     pass
 
-def stawianie_statkow_na_planszy():
+def wprowadzenie_koordynatow_przez_uzytkownika():
     pass
 
-def init_board():
-    board = [["A", x, 0, 0, 0, 0], ["B", 0, 0, x, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, x, 0, 0], ["E", 0, 0, 0, 0, 0]]
+def init_board(board):
+    board = [
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    ]
     return board
 
-
-def has_won(board):
-    if board.count("S") == 6:
-        print("Player1 has one!!!")
-        exit()
-    else:
-        return None
-
-def podstawienie_znakow_X(input_uzytkownika):
-    pass
-
-def podstawienie_znakow_innych():
+def podstawienie_znakow(input_uzytkownika):
     pass
 
 def check_win():
     pass
 
+def delay():
+    print("Loading…")
+    print("█▒▒▒▒▒▒▒▒▒")
+    print("Press any key to continue")
+msvcrt.getch()
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -106,11 +93,9 @@ def exit(user_input):   #w menu
         menu()
 
 
-def zatapianie_statkow(): 
+def wprowadzenie_strzału_przez_uzytkownika(): 
     pass
 
-def delay():
-    pass
 
 def get_move(board, player):     
     row, col = 3, 3     
