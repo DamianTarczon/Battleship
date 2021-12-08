@@ -7,15 +7,27 @@ def game_logic():
     delay()
     postawienie_statkow(board2)
     while True:
+        clear()
         print_table(board_for_shooting)
+        print_table(board_for_shooting2)
+        # print z instrukcja
+        user_is_shooting(board2, board_for_shooting)
+        clear()
+        print_table(board_for_shooting)
+        print_table(board_for_shooting2)
+        counter = counter_s(board_for_shooting)
+        if check_win(counter):
+            print("Player 1 has won!")
+            exit()
+        
         # print_table(board_for_shooting2)
-        user_is_shooting(board, board_for_shooting)
-        if not check_win(board_for_shooting):
-            print_table(board_for_shooting2)
-            # print_table(board_for_shooting)
-            user_is_shooting(board_for_shooting2, board2)
-        if check_win(board_for_shooting) is True:
-            print("Player1 has won")
-        elif check_win(board_for_shooting2) is True:
+        # print z instrukcja
+        user_is_shooting(board, board_for_shooting2)
+        clear()
+        print_table(board_for_shooting)
+        print_table(board_for_shooting2)
+        counter = counter_s(board_for_shooting2)
+        if check_win(counter):
             print("Player 2 has won!")
-        # print_result(winner)
+            exit()
+        continue
