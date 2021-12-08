@@ -1,12 +1,17 @@
 from tabulate import tabulate
+import copy
+
+def get_list_copy(list):
+    new_list = copy.deepcopy(list)
+    return new_list
 
 
 def letter_to_number(letter):
     letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4}
     return letters_to_numbers.get(letter)
 
-def changing_table(row, col, board):
-        board[row][col] = "X"
+def changing_table(row, col, board, value = "X"):
+        board[row][col] = value
 
 def check_valid_move_from_user_input():
     letters = ["A", "B", "C", "D", "E"]
@@ -156,14 +161,43 @@ def podstawienie_znakow(board):
     print_table(board)
 
 
+def check_user_shoot(row, col, board, board_for_shooting):
+    if board[row][col] == "X":
+        if board_for_shooting[row-1][col] == "H":
+            board_for_shooting[row-1][col] = "S"
+            return "S"
+        elif board_for_shooting[row][col - 1] == "H":
+            board_for_shooting[row][col - 1] = "S"
+            return "S"
+        elif board_for_shooting[row][col + 1] == "H":
+            board_for_shooting[row][col + 1] = "S"
+            return "S"
+        elif board_for_shooting[row + 1][col] == "H":
+            board_for_shooting[row + 1][col] = "S"
+            return "S"
+        else:
+            return "H"
+    elif board[row][col] != "X":
+        return "M"
 
 
+def user_is_shooting(board, board_for_shooting):
+    user_input = check_valid_move_from_user_input()
+    row, col = user_input_to_row_and_col(user_input)
+    shoot_value = check_user_shoot(row, col, board, board_for_shooting)
+    changing_table(row, col, board_for_shooting, shoot_value)
 
-board = [["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]
 
-podstawienie_znakow(board)
+def main():
+    board = [["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]
+    board_for_shooting = get_list_copy(board)
+    podstawienie_znakow(board)
+    print_table(board_for_shooting)
+    user_is_shooting(board, board_for_shooting)
+    print_table(board_for_shooting)
+    user_is_shooting(board, board_for_shooting)
+    print_table(board_for_shooting)
 
-"""board[row - 1][col] #nad x
-board[row][col - 1] #po lewej stronie x
-board[row][col + 1] #po prawej stronie x
-board[row + 1][col] #pod x"""
+main()
+
+    
