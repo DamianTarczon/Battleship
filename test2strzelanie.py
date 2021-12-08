@@ -70,12 +70,16 @@ def check_move_2_for_2flag_ship(board):
             user_input = check_valid_move_from_user_input()
             row, col = user_input_to_row_and_col(user_input)
             if board[row-1][col] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row][col - 1] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row][col + 1] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row + 1][col] == "X":
+                ('Your ship is too close to another. ')
                 continue
             else:
                 changing_table(row, col, board)
@@ -92,40 +96,52 @@ def check_move_3_for_2flag_ship(row, col, board):
             row3, col3 = user_input_to_row_and_col(user_input)
             if row3 == row - 1 and col3 == col:
                 if board[row3-1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3][col3 - 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3][col3 + 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 else:
                     changing_table(row3, col3, board)
                 break  
             elif row3 == row + 1 and col3 == col:
                 if board[row3][col3 - 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3][col3 + 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3 + 1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 else:
                     changing_table(row3, col3, board)
                 break
             elif row3 == row and col3 == col - 1:
                 if board[row3-1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3][col3 - 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3 + 1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 else:
                     changing_table(row3, col3, board)
                 break
             elif row3 == row and col3 == col + 1:
                 if board[row3-1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3][col3 + 1] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 elif board[row3 + 1][col3] == "X":
+                    ('Your ship is too close to another. ')
                     continue
                 else:
                     changing_table(row3, col3, board)
@@ -143,12 +159,16 @@ def check_move_4_for_1flag_ship(board):
             user_input = check_valid_move_from_user_input()
             row, col = user_input_to_row_and_col(user_input)
             if board[row-1][col] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row][col - 1] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row][col + 1] == "X":
+                ('Your ship is too close to another. ')
                 continue
             elif board[row + 1][col] == "X":
+                ('Your ship is too close to another. ')
                 continue
             else:
                 changing_table(row, col, board)
