@@ -1,0 +1,21 @@
+def game_logic():
+    board = init_board()
+    board2 = init_board()
+    board_for_shooting = get_list_copy(board2)
+    board_for_shooting2 = get_list_copy(board)
+    postawienie_statkow(board)
+    delay()
+    postawienie_statkow(board2)
+    while True:
+        print_table(board_for_shooting)
+        # print_table(board_for_shooting2)
+        user_is_shooting(board, board_for_shooting)
+        if not check_win(board_for_shooting):
+            print_table(board_for_shooting2)
+            # print_table(board_for_shooting)
+            user_is_shooting(board_for_shooting2, board2)
+        if check_win(board_for_shooting) is True:
+            print("Player1 has won")
+        elif check_win(board_for_shooting2) is True:
+            print("Player 2 has won!")
+        # print_result(winner)
