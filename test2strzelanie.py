@@ -19,12 +19,15 @@ def check_valid_move_from_user_input():
     user_input = input("Choose coordinates: ").upper()
     while True:
         if len(user_input) != 2:
+            print('Wrong! Your input should be like this a1')
             user_input = input("Wrong! Choose again: ").upper()
             continue
         elif user_input[0] not in letters:
+            print('First mark can only be a,b,c,d,e.')
             user_input = input("Wrong! Choose again: ").upper()
             continue
         elif user_input[1] not in numbers:
+            print('Second mark can only be 1,2,3,4,5.')
             user_input = input("Wrong! Choose again: ").upper()
             continue
         else:
@@ -57,6 +60,7 @@ def check_move_1_for_2flag_ship(row, col, board):
             changing_table(row2, col2, board)
             break
         else:
+            print('Your move can only be upright or horizontal')
             continue
 
 
