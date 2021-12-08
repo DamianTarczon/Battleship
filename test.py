@@ -35,7 +35,7 @@ def print_table(list):
     head = [" ", "1", "2", "3", "4", "5"]
     print(tabulate(list, headers=head, tablefmt="fancy_grid"))
 
-def check_move_1(row, col, board):
+def check_move_1_for_2flag_ship(row, col, board):
     while True:
         user_input = check_valid_move_from_user_input()
         row2, col2 = user_input_to_row_and_col(user_input)
@@ -55,7 +55,7 @@ def check_move_1(row, col, board):
             continue
 
 
-def check_move_2(board):
+def check_move_2_for_2flag_ship(board):
     while True:
         user_input = check_valid_move_from_user_input()
         row, col = user_input_to_row_and_col(user_input)
@@ -72,7 +72,7 @@ def check_move_2(board):
             return row, col
 
 
-def check_move_3(row, col, board):
+def check_move_3_for_2flag_ship(row, col, board):
     while True:
         user_input = check_valid_move_from_user_input()
         row3, col3 = user_input_to_row_and_col(user_input)
@@ -120,18 +120,40 @@ def check_move_3(row, col, board):
             continue
 
 
+def check_move_4_for_1flag_ship(board):
+    while True:
+        user_input = check_valid_move_from_user_input()
+        row, col = user_input_to_row_and_col(user_input)
+        if board[row-1][col] == "X":
+            continue
+        elif board[row][col - 1] == "X":
+            continue
+        elif board[row][col + 1] == "X":
+            continue
+        elif board[row + 1][col] == "X":
+            continue
+        else:
+            changing_table(row, col, board)
+            break
+
+
 def podstawienie_znakow(board):
     print_table(board)
     user_input = check_valid_move_from_user_input()
     row, col = user_input_to_row_and_col(user_input)
     changing_table(row, col, board)
     print_table(board)
-    check_move_1(row, col, board)
+    check_move_1_for_2flag_ship(row, col, board)
     print_table(board)
-    row2, col2 = check_move_2(board)
+    row2, col2 = check_move_2_for_2flag_ship(board)
     print_table(board)
-    check_move_3(row2, col2, board)
+    check_move_3_for_2flag_ship(row2, col2, board)
     print_table(board)
+    check_move_4_for_1flag_ship(board)
+    print_table(board)
+    check_move_4_for_1flag_ship(board)
+    print_table(board)
+
 
 
 
