@@ -62,82 +62,94 @@ def check_move_1_for_2flag_ship(row, col, board):
 
 def check_move_2_for_2flag_ship(board):
     while True:
-        user_input = check_valid_move_from_user_input()
-        row, col = user_input_to_row_and_col(user_input)
-        if board[row-1][col] == "X":
-            continue
-        elif board[row][col - 1] == "X":
-            continue
-        elif board[row][col + 1] == "X":
-            continue
-        elif board[row + 1][col] == "X":
-            continue
-        else:
+        try:
+            user_input = check_valid_move_from_user_input()
+            row, col = user_input_to_row_and_col(user_input)
+            if board[row-1][col] == "X":
+                continue
+            elif board[row][col - 1] == "X":
+                continue
+            elif board[row][col + 1] == "X":
+                continue
+            elif board[row + 1][col] == "X":
+                continue
+            else:
+                changing_table(row, col, board)
+                return row, col
+        except:
             changing_table(row, col, board)
             return row, col
 
 
 def check_move_3_for_2flag_ship(row, col, board):
     while True:
-        user_input = check_valid_move_from_user_input()
-        row3, col3 = user_input_to_row_and_col(user_input)
-        if row3 == row - 1 and col3 == col:
-            if board[row3-1][col3] == "X":
-                continue
-            elif board[row3][col3 - 1] == "X":
-                continue
-            elif board[row3][col3 + 1] == "X":
-                continue
+        try:
+            user_input = check_valid_move_from_user_input()
+            row3, col3 = user_input_to_row_and_col(user_input)
+            if row3 == row - 1 and col3 == col:
+                if board[row3-1][col3] == "X":
+                    continue
+                elif board[row3][col3 - 1] == "X":
+                    continue
+                elif board[row3][col3 + 1] == "X":
+                    continue
+                else:
+                    changing_table(row3, col3, board)
+                break  
+            elif row3 == row + 1 and col3 == col:
+                if board[row3][col3 - 1] == "X":
+                    continue
+                elif board[row3][col3 + 1] == "X":
+                    continue
+                elif board[row3 + 1][col3] == "X":
+                    continue
+                else:
+                    changing_table(row3, col3, board)
+                break
+            elif row3 == row and col3 == col - 1:
+                if board[row3-1][col3] == "X":
+                    continue
+                elif board[row3][col3 - 1] == "X":
+                    continue
+                elif board[row3 + 1][col3] == "X":
+                    continue
+                else:
+                    changing_table(row3, col3, board)
+                break
+            elif row3 == row and col3 == col + 1:
+                if board[row3-1][col3] == "X":
+                    continue
+                elif board[row3][col3 + 1] == "X":
+                    continue
+                elif board[row3 + 1][col3] == "X":
+                    continue
+                else:
+                    changing_table(row3, col3, board)
+                break
             else:
-                changing_table(row3, col3, board)
-            break  
-        elif row3 == row + 1 and col3 == col:
-            if board[row3][col3 - 1] == "X":
                 continue
-            elif board[row3][col3 + 1] == "X":
-                continue
-            elif board[row3 + 1][col3] == "X":
-                continue
-            else:
-                changing_table(row3, col3, board)
+        except:
+            changing_table(row3, col3, board)
             break
-        elif row3 == row and col3 == col - 1:
-            if board[row3-1][col3] == "X":
-                continue
-            elif board[row3][col3 - 1] == "X":
-                continue
-            elif board[row3 + 1][col3] == "X":
-                continue
-            else:
-                changing_table(row3, col3, board)
-            break
-        elif row3 == row and col3 == col + 1:
-            if board[row3-1][col3] == "X":
-                continue
-            elif board[row3][col3 + 1] == "X":
-                continue
-            elif board[row3 + 1][col3] == "X":
-                continue
-            else:
-                changing_table(row3, col3, board)
-            break
-        else:
-            continue
 
 
 def check_move_4_for_1flag_ship(board):
     while True:
-        user_input = check_valid_move_from_user_input()
-        row, col = user_input_to_row_and_col(user_input)
-        if board[row-1][col] == "X":
-            continue
-        elif board[row][col - 1] == "X":
-            continue
-        elif board[row][col + 1] == "X":
-            continue
-        elif board[row + 1][col] == "X":
-            continue
-        else:
+        try:
+            user_input = check_valid_move_from_user_input()
+            row, col = user_input_to_row_and_col(user_input)
+            if board[row-1][col] == "X":
+                continue
+            elif board[row][col - 1] == "X":
+                continue
+            elif board[row][col + 1] == "X":
+                continue
+            elif board[row + 1][col] == "X":
+                continue
+            else:
+                changing_table(row, col, board)
+                break
+        except:
             changing_table(row, col, board)
             break
     

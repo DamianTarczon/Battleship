@@ -161,7 +161,7 @@ def podstawienie_znakow(board):
 
 board = [["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]
 
-podstawienie_znakow(board)
+print_table(board)
 
 """board[row - 1][col] #nad x
 board[row][col - 1] #po lewej stronie x
