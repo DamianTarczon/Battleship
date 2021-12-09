@@ -1,0 +1,30 @@
+def main_menu():
+    while True:
+        clear()
+        print("Arrr Capitan!!! Enemys's fleet is sailing on us!!!\nWhat You want to do???")
+        print("")
+        print(""".=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.""")
+        print("""|                     ______                     |""")
+        print("""|                  .-"      "-.                  |""")
+        print("""|                 /            \                 |""")
+        print("""|     _          |              |          _     |""")
+        print("""|    ( \         |,  .-.  .-.  ,|         / )    |""")
+        print("""|     > "=._     | )(__/  \__)( |     _.=" <     |""")
+        print("""|    (_/"=._"=._ |/     /\     \| _.="_.="\_)    |""")
+        print("""|           "=._"(_     ^^     _)"_.="           |""")
+        print("""|               "=\__|IIIIII|__/="               |""")
+        print("""|              _.="| \IIIIII/ |"=._              |""")
+        print("""|    _     _.="_.="\          /"=._"=._     _    |""")
+        print("""|   ( \_.="_.="     `--------`     "=._"=._/ )   |""")
+        print("""|    > _.="                            "=._ <    |""")
+        print("""|   (_/                                    \_)   |""")
+        print("""|                                                |""")
+        print("'-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='")
+        print(" ")
+        start = input("1. Prepare to Battle (PvP)\n2. Flee like a coward (quit)\nType 1 or 2 here => ")
+        if start == str(1):
+            game_logic()
+        elif start == str(2):
+            exit()
+        else:
+            ("Insert '1' or '2'. No other options Cappy.")
