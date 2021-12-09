@@ -191,6 +191,13 @@ def check_x_all_around(board, row, col):
     except:
         return "S"
 
+def is_empty_or_out_of_range(board, col, row):
+    if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
+        return True
+    if board[row][col] == 0:
+        return True
+    return False
+
 '''def is_out_of_range(board, row, col):
     if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
         return True
