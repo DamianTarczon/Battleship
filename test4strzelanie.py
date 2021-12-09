@@ -66,6 +66,25 @@ def check_move_1_for_2flag_ship(row, col, board):
 
 def check_move_2_for_2flag_ship(board):
     while True:
+        user_input = check_valid_move_from_user_input()
+        row, col = user_input_to_row_and_col(user_input)
+        value = is_empty_or_out_of_range(board, row-1, col)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row, col-1)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row, col+1)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row+1, col)
+        if value == "N":
+            continue
+        else:
+            changing_table(row, col, board)
+            return row, col
+
+    '''while True:
         try:
             user_input = check_valid_move_from_user_input()
             row, col = user_input_to_row_and_col(user_input)
@@ -82,11 +101,84 @@ def check_move_2_for_2flag_ship(board):
                 return row, col
         except:
             changing_table(row, col, board)
-            return row, col
+            return row, col'''
 
+def is_in_board(board, row, col):
+    if (len(board) > row and 0 <= row) and (len(board[0]) > col and 1 <= col):
+        return True
+    return False
 
 def check_move_3_for_2flag_ship(row, col, board):
     while True:
+        user_input = check_valid_move_from_user_input()
+        row_for_second_x, col_for_second_x = user_input_to_row_and_col(user_input)
+        if is_in_board(board, row-1, col) and row_for_second_x-1 and col_for_second_x == col:
+            value = is_empty_or_out_of_range(board, row_for_second_x-1, col_for_second_x)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x-1)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x+1)
+            if value == "N":
+                continue
+            #value = is_empty_or_out_of_range(board, row_for_second_x+1, col_for_second_x)
+            #if value == "N":
+                #continue
+            else:
+                changing_table(row_for_second_x, col_for_second_x, board)
+                break
+        elif is_in_board(board, row, col-1) and row_for_second_x == row and col_for_second_x-1 == col-1:
+            value = is_empty_or_out_of_range(board, row_for_second_x-1, col_for_second_x)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x-1)
+            if value == "N":
+                continue
+            #value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x+1)
+            #if value == "N":
+                #continue
+            value = is_empty_or_out_of_range(board, row_for_second_x+1, col_for_second_x)
+            if value == "N":
+                continue
+            else:
+                changing_table(row_for_second_x, col_for_second_x, board)
+                break
+        elif is_in_board(board, row, col+1) and row_for_second_x == row and col_for_second_x+1 == col+1:
+            value = is_empty_or_out_of_range(board, row_for_second_x-1, col_for_second_x)
+            if value == "N":
+                continue
+            #value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x-1)
+            #if value == "N":
+                #continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x+1)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x+1, col_for_second_x)
+            if value == "N":
+                continue
+            else:
+                changing_table(row_for_second_x, col_for_second_x, board)
+                break
+        elif is_in_board(board, row+1, col) and row_for_second_x == row+1 and col_for_second_x == col:
+            #value = is_empty_or_out_of_range(board, row_for_second_x-1, col_for_second_x)
+            #if value == "N":
+                #continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x-1)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x, col_for_second_x+1)
+            if value == "N":
+                continue
+            value = is_empty_or_out_of_range(board, row_for_second_x+1, col_for_second_x)
+            if value == "N":
+                continue
+            else:
+                changing_table(row_for_second_x, col_for_second_x, board)
+                break
+        else:
+            continue
+    '''while True:
         try:
             user_input = check_valid_move_from_user_input()
             row3, col3 = user_input_to_row_and_col(user_input)
@@ -134,29 +226,29 @@ def check_move_3_for_2flag_ship(row, col, board):
                 continue
         except:
             changing_table(row3, col3, board)
-            break
+            break'''
 
 
 def check_move_4_for_1flag_ship(board):
     while True:
-        try:
-            user_input = check_valid_move_from_user_input()
-            row, col = user_input_to_row_and_col(user_input)
-            if board[row-1][col] == "X":
-                continue
-            elif board[row][col - 1] == "X":
-                continue
-            elif board[row][col + 1] == "X":
-                continue
-            elif board[row + 1][col] == "X":
-                continue
-            else:
-                changing_table(row, col, board)
-                break
-        except:
+        user_input = check_valid_move_from_user_input()
+        row, col = user_input_to_row_and_col(user_input)
+        value = is_empty_or_out_of_range(board, row-1, col)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row, col-1)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row, col+1)
+        if value == "N":
+            continue
+        value = is_empty_or_out_of_range(board, row+1, col)
+        if value == "N":
+            continue
+        else:
             changing_table(row, col, board)
             break
-    
+
 
 def podstawienie_znakow(board):
     print_table(board)
@@ -191,12 +283,21 @@ def check_x_all_around(board, row, col):
     except:
         return "S"
 
-def is_empty_or_out_of_range(board, col, row):
-    if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
-        return True
-    if board[row][col] == 0:
-        return True
-    return False
+
+def is_empty_or_out_of_range(board, row, col):
+    if (len(board) > row and 0 <= row) and (len(board[0]) > col and 1 <= col):
+        if board[row][col] == 0:
+            return "Y"
+        return "N"
+    return "Y"
+
+
+'''def is_empty_or_out_of_range(board, row, col):
+    if (len(board) > row and 0 < row) and (len(board[0]) > col and 1 <= col):
+        if board[row][col] == 0:
+            return True
+        return False
+    return False'''
 
 '''def is_out_of_range(board, row, col):
     if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
