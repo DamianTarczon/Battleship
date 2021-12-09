@@ -1,5 +1,7 @@
 from tabulate import tabulate
 
+board = [["A", 0, 0, 0, 0, 0], ["B", 0, 's', 0, 0, 0], ["C", 0, 0, 's', 0, 0], ["D", 0, 0, 0, 's', 0], ["E", 0, 0, 0, 0, 0]]
+board2 = [["A", 'x', 3, 3, 3, 3], ["B", 0, 's', 3, 0, 0], ["C", 0, 0, 's', 0, 0], ["D", 0, 3, 3, 's', 0], ["E", 0, 0, 0, 0, 0]]
 
 def print_table(list1, list2):
     head = [" ", "1", "2", "3", "4", "5", " ", " ", "1", "2", "3", "4", "5"]
@@ -11,7 +13,8 @@ def print_table(list1, list2):
     print(tabulate(print_arr, head , tablefmt="fancy_grid"))
 
 
-board = [["A", 0, 0, 0, 0, 0], ["B", 0, 's', 0, 0, 0], ["C", 0, 0, 's', 0, 0], ["D", 0, 0, 0, 's', 0], ["E", 0, 0, 0, 0, 0]]
-board2 = [["A", 'x', 3, 3, 3, 3], ["B", 0, 's', 3, 0, 0], ["C", 0, 0, 's', 0, 0], ["D", 0, 3, 3, 's', 0], ["E", 0, 0, 0, 0, 0]]
+#print_table(board, board2)
+print(len(board))
 
-print_table(board, board2)
+print("hello \n\n")
+print("takk")

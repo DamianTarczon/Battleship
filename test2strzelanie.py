@@ -43,6 +43,17 @@ def print_table(list):
     head = [" ", "1", "2", "3", "4", "5"]
     print(tabulate(list, headers=head, tablefmt="fancy_grid"))
 
+def print_table2(list1, list2):
+    head = [" ", "1", "2", "3", "4", "5", " ", " ", "1", "2", "3", "4", "5"]
+    print_arr = []
+    for index, _ in enumerate(list1):
+        row = list1[index] + [" "] + list2[index]
+        print_arr.append(row)
+        
+    print(tabulate(print_arr, head , tablefmt="fancy_grid"))
+
+
+
 def check_move_1_for_2flag_ship(row, col, board):
     while True:
         user_input = check_valid_move_from_user_input()
@@ -228,11 +239,11 @@ def main():
     board = [["A", 0, 0, 0, 0, 0], ["B", 0, 0, 0, 0, 0], ["C", 0, 0, 0, 0, 0], ["D", 0, 0, 0, 0, 0], ["E", 0, 0, 0, 0, 0]]
     board_for_shooting = get_list_copy(board)
     podstawienie_znakow(board)
-    print_table(board_for_shooting)
+    print_table2(board, board_for_shooting)
     user_is_shooting(board, board_for_shooting)
-    print_table(board_for_shooting)
+    print_table2(board, board_for_shooting)
     user_is_shooting(board, board_for_shooting)
-    print_table(board_for_shooting)
+    print_table2(board, board_for_shooting)
 
 main()
 
