@@ -217,19 +217,19 @@ def ship_placement(board):
 
 
 def check_x_all_around(board, row, col):
-    try:
-        if board[row-1][col] == "X":
-            return "H"
-        elif board[row][col - 1] == "X":
-            return "H"
-        elif board[row][col + 1] == "X":
-            return "H"
-        elif board[row + 1][col] == "X":
-            return "H"
-        else:
-            return "S"
-    except:
-        return "S"
+    value = is_empty_or_out_of_range(board, row-1, col)
+    if value == "N":
+        return "H"
+    value = is_empty_or_out_of_range(board, row, col-1)
+    if value == "N":
+        return "H"
+    value = is_empty_or_out_of_range(board, row, col+1)
+    if value == "N":
+        return "H"
+    value = is_empty_or_out_of_range(board, row+1, col)
+    if value == "N":
+        return "H"
+    return "S"
 
 
 def is_empty_or_out_of_range(board, row, col):
@@ -341,6 +341,7 @@ def game_logic():
         counter = counter_s(board_for_shooting)
         if check_win(counter) is True:
             print("Player ONE has won!")
+            delay()
             main_menu()
         clear()
         print("Player TWO is shooting now:\n\n")
@@ -350,6 +351,7 @@ def game_logic():
         counter = counter_s(board_for_shooting2)
         if check_win(counter) is True:
             print("Player TWO has won!")
+            delay()
             main_menu()
         continue
 
