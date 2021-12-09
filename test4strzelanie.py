@@ -191,6 +191,15 @@ def check_x_all_around(board, row, col):
     except:
         return "S"
 
+'''def is_out_of_range(board, row, col):
+    if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
+        return True
+    return False'''
+
+'''def is_x(board, row, col):
+    if board[row][col] == "X":
+        return True
+    return False'''
 
 def is_h_or_out_of_range(board, row, col):
     if (len(board) > row or 0 >= row) and (len(board[0]) > col or 1 >= col):
@@ -241,6 +250,24 @@ def main():
     print_table(board_for_shooting)
     user_is_shooting(board, board_for_shooting)
     print_table(board_for_shooting)
+    user_is_shooting(board, board_for_shooting)
+    print_table(board_for_shooting)
+    user_is_shooting(board, board_for_shooting)
+    print_table(board_for_shooting)
 
 main()
 
+'''if is_out_of_range(board_for_shooting, row-1, col):
+            if is_x(board, row-1, col):
+                return "H"
+        elif is_out_of_range(board_for_shooting, row, col-1):
+            if is_x(board, row, col-1):
+                return "H"
+        elif is_out_of_range(board_for_shooting, row, col+1):
+            if is_x(board, row, col+1):
+                return "H"
+        elif is_out_of_range(board_for_shooting, row+1, col):
+            if is_x(board, row+1, col):
+                return "H"
+        else:
+            return "S"'''
