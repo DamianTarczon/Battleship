@@ -1,6 +1,7 @@
 from tabulate import tabulate
 import copy
 import os
+import time
 import msvcrt
 
 def get_list_copy(list):
@@ -50,7 +51,7 @@ def print_table(list):
     print(tabulate(list, headers=head, tablefmt="fancy_grid"))
 
 
-def check_move_1_for_2flag_ship(row, col, board):
+def check_second_move_for_first2flag_ship(row, col, board):
     while True:
         user_input = check_valid_move_from_user_input()
         row2, col2 = user_input_to_row_and_col(user_input)
@@ -71,7 +72,7 @@ def check_move_1_for_2flag_ship(row, col, board):
             continue
 
 
-def check_move_2_for_2flag_ship(board):
+def check_first_move_for_second2flag_ship(board):
     while True:
         user_input = check_valid_move_from_user_input()
         row, col = user_input_to_row_and_col(user_input)
@@ -98,7 +99,7 @@ def is_in_board(board, row, col):
     return False
 
 
-def check_move_3_for_2flag_ship(row, col, board):
+def check_second_move_for_second2flag_ship(row, col, board):
     while True:
         user_input = check_valid_move_from_user_input()
         row_for_second_x, col_for_second_x = user_input_to_row_and_col(user_input)
@@ -157,7 +158,7 @@ def check_move_3_for_2flag_ship(row, col, board):
             continue
 
 
-def check_move_4_for_1flag_ship(board):
+def check_move_for_1flag_ship(board):
     while True:
         user_input = check_valid_move_from_user_input()
         row, col = user_input_to_row_and_col(user_input)
@@ -189,27 +190,27 @@ def ship_placement(board):
     print("Batlle strategy (ship placement)")
     print_table(board)
     print("Place second block of two-blocks ship!!")
-    check_move_1_for_2flag_ship(row, col, board)
+    check_second_move_for_first2flag_ship(row, col, board)
     clear()
     print("Batlle strategy (ship placement)")
     print_table(board)
     print("Place first block of two-blocks ship!")
-    row2, col2 = check_move_2_for_2flag_ship(board)
+    row2, col2 = check_first_move_for_second2flag_ship(board)
     clear()
     print("Batlle strategy (ship placement)")
     print_table(board)
     print("Place second block of two-blocks ship!")
-    check_move_3_for_2flag_ship(row2, col2, board)
+    check_second_move_for_second2flag_ship(row2, col2, board)
     clear()
     print("Batlle strategy (ship placement)")
     print_table(board)
     print("Place one-block ship!")
-    check_move_4_for_1flag_ship(board)
+    check_move_for_1flag_ship(board)
     clear()
     print("Batlle strategy (ship placement)")
     print_table(board)
     print("Place one-block ship!")
-    check_move_4_for_1flag_ship(board)
+    check_move_for_1flag_ship(board)
     clear()
     print("Batlle strategy (ship placement)")
     print_table(board)
@@ -311,7 +312,7 @@ def init_board():
 def counter_s(board):
     counter = 0
     for i in range(len(board)):
-        number = board[i].count('s')     
+        number = board[i].count('S')     
         counter += number
     return counter
 
@@ -334,9 +335,9 @@ def game_logic():
     ship_placement(board2)
     while True:
         clear()
-        print("Player ONE is shooting now:\n\n")
         print("Player's ONE fleet:" + " "*24 + "Player's TWO fleet:")
         print_table_dubble(board_for_shooting2, board_for_shooting)
+        print("Player ONE is shooting now: ")
         user_is_shooting(board2, board_for_shooting)
         counter = counter_s(board_for_shooting)
         if check_win(counter) is True:
@@ -344,9 +345,9 @@ def game_logic():
             delay()
             main_menu()
         clear()
-        print("Player TWO is shooting now:\n\n")
         print("Player's ONE fleet:" + " "*24 + "Player's TWO fleet:")
         print_table_dubble(board_for_shooting2, board_for_shooting)
+        print("Player TWO is shooting now: ")
         user_is_shooting(board, board_for_shooting2)
         counter = counter_s(board_for_shooting2)
         if check_win(counter) is True:
@@ -385,7 +386,8 @@ def main_menu():
         elif start == str(2):
             exit()
         else:
-            ("Insert '1' or '2'. No other options Cappy.")
+            print("Insert '1' or '2'. No other options Cappy.")
+            time.sleep(2)
             
-main_menu()
-            
+if __name__ == '__main__':
+    main_menu()
