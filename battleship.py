@@ -339,6 +339,7 @@ def game_logic():
         print_table_dubble(board_for_shooting2, board_for_shooting)
         print("Player ONE is shooting now: ")
         user_is_shooting(board2, board_for_shooting)
+        print_table_dubble(board_for_shooting2, board_for_shooting)
         counter = counter_s(board_for_shooting)
         if check_win(counter) is True:
             print("Player ONE has won!")
@@ -349,6 +350,7 @@ def game_logic():
         print_table_dubble(board_for_shooting2, board_for_shooting)
         print("Player TWO is shooting now: ")
         user_is_shooting(board, board_for_shooting2)
+        print_table_dubble(board_for_shooting2, board_for_shooting)
         counter = counter_s(board_for_shooting2)
         if check_win(counter) is True:
             print("Player TWO has won!")
